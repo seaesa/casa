@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="page-head">
+    <ol class="crumbs"><li><a href="index.html">Trang chủ</a></li><li aria-current="page">Liên hệ</li></ol>
+    <h1 class="h-1">Liên hệ Đông xưởng</h1>
+    <p class="lead">Cần tư vấn lộ trình học, đào tạo doanh nghiệp hay hỗ trợ kỹ thuật? Nhắn Zalo để được phản hồi nhanh nhất, hoặc để lại lời nhắn bên dưới.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div>
+      <div class="contact-card">
+        <div class="brand-row">
+          <img src="assets/img/logo.webp" width="600" height="235" alt="Đông xưởng, Powered by Casa⁺">
+        </div>
+        <p style="color:var(--ink-2);margin-bottom:16px">Đông xưởng, Học viện thiết kế sáng tạo, là thương hiệu thành viên được sáng lập và vận hành bởi Casa⁺, trực thuộc Công ty Cổ phần Dịch vụ &amp; Giáo dục C.A.S (C.A.S JSC).</p>
+        <ul class="contact-list">
+          <li>{{icon:map-pin}}<span>76/50B Phan Tây Hồ, Phường Cầu Kiệu, TP Hồ Chí Minh, Việt Nam</span></li>
+          <li>{{icon:phone}}<span><a href="tel:0763161286"><strong>0763 161 286</strong></a><small>Hỗ trợ tư vấn</small></span></li>
+          <li>{{icon:mail}}<span><a href="mailto:dongxuong@casa-evolution.com">dongxuong@casa-evolution.com</a></span></li>
+          <li>{{icon:clock}}<span>9:00 – 18:30<small>Giờ mở cửa</small></span></li>
+        </ul>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+          <a class="btn btn-red btn-lg" href="https://zalo.me/0763161286" target="_blank" rel="noopener">Nhắn tin Zalo</a>
+          <a class="btn btn-white btn-lg" href="tel:0763161286">{{icon:phone}}Gọi ngay</a>
+        </div>
+        <div class="qr">
+          <img src="assets/img/zalo-qr.webp" width="700" height="710" alt="Mã QR Zalo của Đông xưởng" loading="lazy">
+          <p>Mở Zalo, chọn quét mã QR để nhắn tin và xem thông tin trên điện thoại.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="form-card">
+        <h2 class="h-2">Gửi lời nhắn</h2>
+        <p>Chúng tôi phản hồi qua email hoặc điện thoại trong giờ làm việc.</p>
+        <form id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="field"><label for="c-name">Họ và tên</label><input class="input" id="c-name" name="name" type="text" autocomplete="name" required data-label="họ và tên"><span class="field-error" aria-live="polite"></span></div>
+            <div class="field"><label for="c-phone">Số điện thoại</label><input class="input" id="c-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required data-label="số điện thoại"><span class="field-error" aria-live="polite"></span></div>
+          </div>
+          <div class="field"><label for="c-email">Email <span class="opt">(không bắt buộc)</span></label><input class="input" id="c-email" name="email" type="email" autocomplete="email"><span class="field-error" aria-live="polite"></span></div>
+          <div class="field"><label for="c-topic">Bạn quan tâm đến</label>
+            <select class="input" id="c-topic" name="topic">
+              <option>Lộ trình học cá nhân</option>
+              <option>Ứng dụng chuyên ngành</option>
+              <option>Workshop hướng dẫn đồ án</option>
+              <option>Đào tạo doanh nghiệp</option>
+              <option>Luyện thi chứng nhận McNeel</option>
+              <option>Hỗ trợ kỹ thuật, tài khoản</option>
+              <option>Khác</option>
+            </select>
+          </div>
+          <div class="field"><label for="c-msg">Lời nhắn</label><textarea class="input" id="c-msg" name="message" required data-label="lời nhắn" placeholder="Ví dụ: Mình là sinh viên năm 3, muốn học Grasshopper để làm đồ án facade."></textarea><span class="field-error" aria-live="polite"></span></div>
+          <button class="btn btn-red btn-lg btn-block" type="submit">Gửi lời nhắn qua email</button>
+          <p class="form-note">Nút gửi sẽ mở ứng dụng email của bạn với nội dung đã điền sẵn.</p>
+        </form>
+      </div>
+      <div class="map-embed">
+        <iframe title="Bản đồ: 76/50B Phan Tây Hồ, Phường Cầu Kiệu, TP Hồ Chí Minh" src="https://www.google.com/maps?q=76%2F50B%20Phan%20T%C3%A2y%20H%E1%BB%93%2C%20Ph%C6%B0%E1%BB%9Dng%20C%E1%BA%A7u%20Ki%E1%BB%87u%2C%20TP%20H%E1%BB%93%20Ch%C3%AD%20Minh&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</div>

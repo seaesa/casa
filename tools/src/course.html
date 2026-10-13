@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="page-head" style="padding-bottom:20px">
+    <ol class="crumbs"><li><a href="index.html">Trang chủ</a></li><li><a href="courses.html">Khóa học</a></li><li><a id="crumb-cat" href="courses.html"></a></li><li aria-current="page" id="crumb-current"></li></ol>
+  </div>
+
+  <div id="course-root">
+    <div class="detail">
+      <div class="detail-media">
+        <img id="course-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" width="1000" height="704" alt="">
+      </div>
+      <div class="detail-info">
+        <div class="detail-tags" id="course-tags"></div>
+        <h1 id="course-title"></h1>
+        <div class="closeup-person" id="course-mentor"></div>
+        <div class="buybox">
+          <p class="price" id="course-price"></p>
+          <div class="buybox-actions">
+            <a class="btn btn-red btn-lg" id="course-enroll" href="#" target="_blank" rel="noopener">Đăng ký khóa học{{icon:external}}</a>
+            <a class="btn btn-ghost btn-lg" href="https://zalo.me/0763161286" target="_blank" rel="noopener">Tư vấn qua Zalo</a>
+            <button class="btn btn-line btn-lg" type="button" id="course-save" data-save="" aria-pressed="false">{{icon:bookmark}}<span class="save-label">Lưu</span></button>
+          </div>
+          <p class="muted" style="font-size:13.5px">Đăng ký và thanh toán được thực hiện trên hệ thống học tập của Đông xưởng. Cần hỗ trợ? Gọi <a class="link" href="tel:0763161286">0763 161 286</a>.</p>
+        </div>
+        <div class="detail-desc">
+          <h2>Giới thiệu khóa học</h2>
+          <p id="course-desc"></p>
+        </div>
+        <button class="btn btn-line" type="button" id="course-share" style="align-self:flex-start">{{icon:share}}Chia sẻ khóa học</button>
+      </div>
+    </div>
+
+    <section class="section" style="padding-top:0" aria-labelledby="related-title">
+      <div class="section-head">
+        <h2 class="h-2" id="related-title">Khóa học liên quan</h2>
+        <a class="btn btn-ghost" id="related-more" href="courses.html">Xem cùng nhóm</a>
+      </div>
+      <div class="course-grid" id="related-grid"></div>
+    </section>
+  </div>
+
+  <div class="empty" id="course-missing" hidden style="padding-block:96px">
+    <h1 class="h-2" style="margin-bottom:10px">Không tìm thấy khóa học</h1>
+    <p class="muted">Đường dẫn có thể đã thay đổi. Xem danh sách khóa học hiện có để chọn lộ trình phù hợp.</p>
+    <a class="btn btn-red btn-lg" href="courses.html">Xem tất cả khóa học</a>
+  </div>
+</div>

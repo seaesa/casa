@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="page-head">
+    <ol class="crumbs"><li><a href="index.html">Trang chủ</a></li><li aria-current="page">Khóa học</li></ol>
+    <h1 class="h-1">Đâu là lộ trình của bạn?</h1>
+    <p class="lead">Computational design trong ngành AEC: từ nền tảng Rhino &amp; Grasshopper, ứng dụng chuyên ngành đến đào tạo doanh nghiệp và chứng nhận McNeel.</p>
+  </div>
+</div>
+
+<div class="feed-bar">
+  <div class="container">
+    <div class="chips-wrap">
+      <div class="chips" id="course-chips" role="toolbar" aria-label="Lọc theo nhóm khóa học">
+        <button class="chip" type="button" data-cat="all" aria-pressed="true">Tất cả <span class="count"></span></button>
+        <button class="chip" type="button" data-cat="lo-trinh" aria-pressed="false">Lộ trình học <span class="count"></span></button>
+        <button class="chip" type="button" data-cat="chuyen-nganh" aria-pressed="false">Ứng dụng chuyên ngành <span class="count"></span></button>
+        <button class="chip" type="button" data-cat="thu-vien" aria-pressed="false">Thư viện plugin, code <span class="count"></span></button>
+        <button class="chip" type="button" data-cat="workshop" aria-pressed="false">Workshop đồ án <span class="count"></span></button>
+        <button class="chip" type="button" data-cat="doanh-nghiep" aria-pressed="false">Đào tạo doanh nghiệp <span class="count"></span></button>
+        <button class="chip" type="button" data-cat="mcneel" aria-pressed="false">Luyện thi McNeel <span class="count"></span></button>
+        <button class="chip" type="button" data-cat="hoc-vien" aria-pressed="false">Học viên tiêu biểu <span class="count"></span></button>
+        <button class="chip" type="button" data-cat="saved" aria-pressed="false">Đã lưu <span class="count"></span></button>
+      </div>
+      <div class="chips-fade left"><button class="icon-btn" type="button" aria-label="Cuộn trái" tabindex="-1">{{icon:chevron-left}}</button></div>
+      <div class="chips-fade right"><button class="icon-btn" type="button" aria-label="Cuộn phải" tabindex="-1">{{icon:chevron-right}}</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="padding-bottom:80px">
+  <div class="course-tools" style="margin-bottom:24px">
+    <form class="search" id="course-search" role="search" style="max-width:420px">
+      {{icon:search}}
+      <label class="sr-only" for="course-q">Tìm trong danh sách khóa học</label>
+      <input id="course-q" type="search" placeholder="Tìm theo tên, nội dung, mentor" autocomplete="off" enterkeyhint="search">
+    </form>
+    <p class="result-count" id="course-count" aria-live="polite"></p>
+  </div>
+  <div class="course-grid" id="course-grid"></div>
+  <div class="empty" id="course-empty" hidden>
+    <h3 class="h-3">Không có khóa học phù hợp</h3>
+    <p class="muted"></p>
+    <button class="btn btn-ink" type="button" id="course-reset">Xem tất cả khóa học</button>
+  </div>
+</div>
