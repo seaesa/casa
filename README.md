@@ -9,18 +9,20 @@ python3 -m http.server 5173
 # mở http://localhost:5173
 ```
 
-## Các trang
+## Các trang (URL không có đuôi .html)
 
-| File | Nội dung |
-|---|---|
-| `index.html` | Trang chủ dạng lưới Pinterest: lọc theo chủ đề, tìm kiếm trực tiếp, lưu ghim, xem nhanh |
-| `courses.html` | Danh sách 31 khóa học, lọc theo nhóm (`?cat=`), tìm kiếm (`?q=`) |
-| `course.html?slug=…` | Chi tiết khóa học + khóa học liên quan |
-| `about.html` | Về chúng tôi |
-| `contact.html` | Liên hệ, mã QR Zalo, form gửi email, bản đồ |
-| `instructors.html` | Giảng viên |
-| `help.html` | Câu hỏi thường gặp |
-| `privacy.html`, `terms.html`, `payment.html` | Chính sách, điều khoản, quy định thanh toán |
+| URL | File | Nội dung |
+|---|---|---|
+| `/` | `index.html` | Trang chủ dạng lưới Pinterest |
+| `/courses/` | `courses/index.html` | Danh sách khóa học, lọc `?cat=`, tìm `?q=` |
+| `/course/?slug=…` | `course/index.html` | Chi tiết khóa học |
+| `/about/` | `about/index.html` | Về chúng tôi |
+| `/contact/` | `contact/index.html` | Liên hệ |
+| `/instructors/` | `instructors/index.html` | Giảng viên |
+| `/help/` | `help/index.html` | Trợ giúp |
+| `/privacy/`, `/terms/`, `/payment/` | `…/index.html` | Chính sách, điều khoản, thanh toán |
+
+Mỗi trang nằm trong thư mục riêng nên URL sạch chạy được trên mọi hosting tĩnh (Netlify, Vercel, GitHub Pages, Nginx, Apache…) mà không cần cấu hình rewrite. Link cũ dạng `courses.html?q=…` vẫn hoạt động: file `courses.html` ở thư mục gốc tự chuyển sang `/courses/?q=…`. `/index.html` được rút gọn thành `/`.
 
 ## Cấu trúc
 
@@ -36,7 +38,9 @@ tools/src/                  nội dung từng trang (sửa ở đây)
 tools/content/              văn bản chính sách gốc
 ```
 
-Header, menu, footer và dialog đăng nhập dùng chung được sinh bởi `tools/build.py`. Sau khi sửa file trong `tools/src/` hoặc `tools/content/`, chạy:
+Header, menu, footer và dialog đăng nhập dùng chung được sinh bởi `tools/build.py`. Build cũng tự đổi link `trang.html` thành `trang/`, chỉnh đường dẫn tương đối theo thư mục, và gắn `?v=<hash>` vào CSS/JS để trình duyệt luôn tải bản mới. Trong `tools/src/` cứ viết link dạng `courses.html`; trong JS dùng `DX.page('courses', '?cat=…')` và `DX.img('ten-anh')`.
+
+Sau khi sửa file trong `tools/src/`, `tools/content/` hoặc `assets/`, chạy:
 
 ```bash
 python3 tools/build.py

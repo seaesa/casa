@@ -4,6 +4,7 @@
 Chạy:  python3 tools/build.py
 Kết quả ghi ra thư mục gốc dự án (index.html, courses.html, ...).
 """
+import hashlib
 import html
 import re
 from pathlib import Path
@@ -295,6 +296,47 @@ def doc_page(page, meta):
 </div>'''
 
 
+# ---------------------------------------------------------------- clean URLs
+# Mỗi trang được xuất ra <trang>/index.html để URL không có đuôi .html
+# (vd. /courses/, /course/?slug=...). Chạy được trên mọi hosting tĩnh, không cần rewrite.
+LINK_ATTR = re.compile(r'(\b(?:href|src|action|content|poster)=")(?!https?:|mailto:|tel:|#|data:|//)([^"]*)"')
+
+
+def clean_urls(doc, base):
+    """Đổi 'trang.html?x' -> '<base>trang/?x' và 'assets/...' -> '<base>assets/...'."""
+    def fix(m):
+        attr, url = m.group(1), m.group(2)
+        page = re.match(r"^([\w-]+)\.html(.*)$", url)
+        if page:
+            name, rest = page.groups()
+            url = base + ("" if name == "index" else name + "/") + rest
+            return f'{attr}{url or "./"}"'
+        if url.startswith("assets/"):
+            return f'{attr}{base}{url}{version(url)}"'
+        return m.group(0)
+    return LINK_ATTR.sub(fix, doc).replace("__BASE__", base)
+
+
+def version(url):
+    """?v=<hash nội dung> cho CSS/JS để trình duyệt tải bản mới sau mỗi lần build."""
+    if not url.endswith((".css", ".js")):
+        return ""
+    return "?v=" + hashlib.md5((ROOT / url).read_bytes()).hexdigest()[:8]
+
+
+def write_redirect(page):
+    """Giữ link cũ dạng trang.html hoạt động: chuyển sang trang/ kèm query và hash."""
+    (ROOT / f"{page}.html").write_text(f'''<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<title>Đang chuyển trang…</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{page}/">
+<script>location.replace("{page}/" + location.search + location.hash);</script>
+<meta http-equiv="refresh" content="0; url={page}/">
+</head><body><a href="{page}/">Đến trang mới</a></body></html>
+''', encoding="utf-8")
+
+
 def build():
     for page, meta in PAGES.items():
         if "doc" in meta:
@@ -307,7 +349,7 @@ def build():
                 [x for x in meta["scripts"] if x != "courses-data"]
         scripts = "\n".join(f'<script src="assets/js/{x}.js"></script>' for x in order)
         doc = f'''<!doctype html>
-<html lang="vi">
+<html lang="vi" data-base="__BASE__">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -336,8 +378,14 @@ def build():
 </body>
 </html>
 '''
-        (ROOT / f"{page}.html").write_text(doc, encoding="utf-8")
-        print("built", page)
+        if page == "index":
+            out, base = ROOT / "index.html", ""
+        else:
+            out, base = ROOT / page / "index.html", "../"
+            out.parent.mkdir(exist_ok=True)
+            write_redirect(page)
+        out.write_text(clean_urls(doc, base), encoding="utf-8")
+        print("built", out.relative_to(ROOT))
 
 
 if __name__ == "__main__":

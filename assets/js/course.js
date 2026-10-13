@@ -20,15 +20,15 @@
 
   var crumbCat = document.getElementById('crumb-cat');
   crumbCat.textContent = catLabel;
-  crumbCat.href = 'courses.html?cat=' + c.cat;
+  crumbCat.href = DX.page('courses', '?cat=' + c.cat);
   document.getElementById('crumb-current').textContent = c.title;
 
   var img = document.getElementById('course-img');
-  img.src = 'assets/img/' + c.img + '.webp';
+  img.src = DX.img(c.img);
   img.alt = c.title;
 
   document.getElementById('course-title').textContent = c.title;
-  var tags = '<a class="tag" href="courses.html?cat=' + c.cat + '">' + DX.esc(catLabel) + '</a>';
+  var tags = '<a class="tag" href="' + DX.page('courses', '?cat=' + c.cat) + '">' + DX.esc(catLabel) + '</a>';
   if (c.badge) tags = '<span class="tag is-red">' + DX.esc(c.badge) + '</span>' + tags;
   document.getElementById('course-tags').innerHTML = tags;
 
@@ -60,5 +60,5 @@
     related = related.concat(COURSES.filter(function (x) { return x.cat !== c.cat && x.cat !== 'hoc-vien'; }).slice(0, 4 - related.length));
   }
   document.getElementById('related-grid').innerHTML = related.slice(0, 4).map(DX.courseCard).join('');
-  document.getElementById('related-more').href = 'courses.html?cat=' + c.cat;
+  document.getElementById('related-more').href = DX.page('courses', '?cat=' + c.cat);
 })();

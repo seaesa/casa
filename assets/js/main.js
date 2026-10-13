@@ -16,6 +16,20 @@
   DX.ZALO = 'https://zalo.me/0763161286';
   DX.PORTFOLIO = 'https://drive.google.com/file/d/1umKdY0bDLekZFHfh5nF_6yRPSu75GtYu/view?usp=drive_link';
 
+  /* ---------- URLs ----------
+     Trang con nằm trong thư mục riêng (/courses/, /course/...), nên mọi đường dẫn
+     tạo từ JS phải đi qua base tương đối mà build ghi vào <html data-base>. */
+  DX.base = document.documentElement.getAttribute('data-base') || '';
+  DX.page = function (name, query) {
+    return DX.base + (name === 'index' ? '' : name + '/') + (query || '') || './';
+  };
+  DX.img = function (name) { return DX.base + 'assets/img/' + name + '.webp'; };
+
+  // /index.html -> / (chỉ đổi thanh địa chỉ, không tải lại trang)
+  if (/\/index\.html$/.test(location.pathname) && history.replaceState) {
+    history.replaceState(null, '', location.pathname.replace(/index\.html$/, '') + location.search + location.hash);
+  }
+
   /* ---------- helpers ---------- */
   DX.icon = function (name, cls) {
     return '<svg class="i ' + (cls || '') + '" aria-hidden="true"><use href="#i-' + name + '"></use></svg>';
@@ -342,7 +356,7 @@
     var price = DX.price(c);
     return '<article class="card">' +
       '<div class="card-media">' +
-        '<img src="assets/img/' + c.img + '.webp" width="1000" height="704" alt="" loading="lazy" decoding="async">' +
+        '<img src="' + DX.img(c.img) + '" width="1000" height="704" alt="" loading="lazy" decoding="async">' +
         (c.badge ? '<span class="pin-badge' + (c.price === 0 ? ' is-free' : '') + '">' + DX.esc(c.badge) + '</span>' : '') +
         '<div class="pin-actions">' +
           '<button class="btn btn-red pin-save" type="button" data-save="' + id + '" data-name="' + DX.esc(title) + '" aria-pressed="' + on + '" aria-label="' + (on ? 'Bỏ lưu ' : 'Lưu ') + DX.esc(title) + '">' +
@@ -351,7 +365,7 @@
       '</div>' +
       '<div class="card-body">' +
         '<span class="card-cat">' + DX.esc(DX.CATS[c.cat]) + '</span>' +
-        '<h3 class="card-title"><a href="course.html?slug=' + encodeURIComponent(c.slug) + '">' + DX.esc(title) + '</a></h3>' +
+        '<h3 class="card-title"><a href="' + DX.page('course', '?slug=' + encodeURIComponent(c.slug)) + '">' + DX.esc(title) + '</a></h3>' +
         '<p class="card-desc">' + DX.esc(c.desc) + '</p>' +
         '<div class="card-foot"><span class="avatar' + (c.mentor === 'Lê Minh Huy' ? '' : ' is-red') + '" aria-hidden="true">' + DX.initials(c.mentor) + '</span>' +
           '<span>' + DX.esc(c.mentor) + '</span>' +

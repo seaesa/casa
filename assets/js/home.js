@@ -42,7 +42,7 @@
       id: 'route:' + r.key, kind: 'route', group: 'lo-trinh',
       img: 'route-' + r.key, w: r.w, h: r.h, contain: true,
       title: r.title, catLabel: 'Đâu là lộ trình của bạn?', desc: r.desc,
-      action: { label: 'Xem khóa học', href: 'courses.html?cat=' + r.cat }
+      action: { label: 'Xem khóa học', href: DX.page('courses', '?cat=' + r.cat) }
     };
   });
 
@@ -52,7 +52,7 @@
       img: c.img, w: 1000, h: 704,
       title: c.title, catLabel: DX.CATS[c.cat], desc: c.desc,
       mentor: c.mentor, price: DX.price(c), badge: c.badge, free: c.price === 0,
-      action: { label: 'Xem chi tiết', href: 'course.html?slug=' + encodeURIComponent(c.slug) }
+      action: { label: 'Xem chi tiết', href: DX.page('course', '?slug=' + encodeURIComponent(c.slug)) }
     };
   });
 
@@ -84,7 +84,7 @@
       '<div class="pin-frame">' +
       '<a class="pin-media' + (p.contain ? ' is-contain' : '') + '" href="' + DX.esc(p.action.href) + '"' + goExternal +
         ' data-open style="aspect-ratio:' + p.w + '/' + p.h + '" aria-label="Xem nhanh: ' + DX.esc(p.title) + '">' +
-        '<img src="assets/img/' + p.img + '.webp" width="' + p.w + '" height="' + p.h + '" alt="' + DX.esc(p.title) + '" loading="lazy" decoding="async">' +
+        '<img src="' + DX.img(p.img) + '" width="' + p.w + '" height="' + p.h + '" alt="' + DX.esc(p.title) + '" loading="lazy" decoding="async">' +
         '<span class="pin-shade"></span>' +
         (p.badge ? '<span class="pin-badge' + (p.free ? ' is-free' : '') + '">' + DX.esc(p.badge) + '</span>' : '') +
       '</a>' +
@@ -255,7 +255,7 @@
     var p = PINS[i];
     mMedia.classList.toggle('is-contain', !!p.contain);
     mImg.classList.remove('is-loaded');
-    mImg.src = 'assets/img/' + p.img + '.webp';
+    mImg.src = DX.img(p.img);
     mImg.width = p.w; mImg.height = p.h;
     mImg.alt = p.title;
     mCat.textContent = p.catLabel;
