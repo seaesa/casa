@@ -168,7 +168,7 @@ def footer():
     courses = "".join(f'<li><a href="courses.html?cat={k}">{l}</a></li>' for k, l in cats)
     return f'''<section class="cover" aria-label="Khẩu hiệu">
   <img src="assets/img/footer-cover.webp" width="2000" height="720" alt="" loading="lazy">
-  <blockquote class="sr-only">“The second home of Architecture and Design students”, Đông xưởng, Powered by Casa⁺</blockquote>
+  <blockquote><p>“The second home of Architecture and Design students”</p><cite>Đông xưởng, Powered by Casa⁺</cite></blockquote>
 </section>
 <footer class="site-footer">
   <div class="container footer-grid">

@@ -183,8 +183,8 @@
   skip.addEventListener('click', function () {
     var end = root.getBoundingClientRect().bottom + window.scrollY - (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 72);
     window.scrollTo({ top: end, behavior: 'auto' });
-    var next = document.querySelector('.promo-strip');
-    if (next) next.focus({ preventScroll: true });
+    var next = document.getElementById('lo-trinh');
+    if (next) { next.setAttribute('tabindex', '-1'); next.focus({ preventScroll: true }); }
   });
 
   resize();
