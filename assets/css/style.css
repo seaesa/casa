@@ -491,7 +491,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .closeup-top { display: flex; gap: 8px; align-items: center; padding-right: 52px; }
 .closeup-cat { font-size: 14px; font-weight: 600; color: var(--red-text); }
 .closeup-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.12; overflow-wrap: anywhere; }
-.closeup-desc { color: var(--text-2); font-size: 15.5px; }
+.closeup-desc { color: var(--text-2); font-size: 15.5px; font-style: italic; }
+.closeup-src { font-size: 14px; margin-top: -6px; }
 .closeup-person { display: flex; align-items: center; gap: 12px; font-size: 15px; }
 .closeup-person small { display: block; color: var(--muted); font-size: 13px; }
 .closeup-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 8px; }

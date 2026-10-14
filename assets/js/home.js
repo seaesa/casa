@@ -36,21 +36,184 @@
   }
 
   /* ---------- Projects (masonry + closeup) ---------- */
-  var BOARD_DESC = 'Top dự án điển hình trong các lĩnh vực hoạt động của Đông xưởng Casa: từ ý tưởng tham số, mô hình hóa đến triển khai và gia công.';
-  var NAM_DESC = 'Nam xưởng hoạt động trong lĩnh vực tư vấn thiết kế, thi công kiến trúc, nội thất, cảnh quan, quy hoạch và tạo dáng công nghiệp.';
-  var CASA_DESC = 'Ứng dụng Computational Design trong hệ sinh thái Casa⁺: nghiên cứu, đào tạo và chuyển giao giải pháp công nghệ.';
+  // Ảnh từ board Pinterest “Tx: In3D + Tráng men” của Đông xưởng; mỗi ảnh giữ nguồn gốc (domain, link, pin)
   var WORK = [
-    { img: 'project-kien-truc-canh-quan-1', w: 900, h: 1327, title: 'Kiến trúc, cảnh quan', cat: 'Dự án tiêu biểu', desc: BOARD_DESC },
-    { img: 'about-1', w: 600, h: 500, title: 'Cấu trúc lưới gỗ uốn cong', cat: 'Casa⁺', desc: CASA_DESC },
-    { img: 'project-thiet-ke-tao-dang', w: 900, h: 1327, title: 'Thiết kế tạo dáng', cat: 'Dự án tiêu biểu', desc: BOARD_DESC },
-    { img: 'signature-dfma', w: 1000, h: 968, title: 'Signature: Design for Manufacturing & Assembly', cat: 'DfMA', desc: 'Computational Design và DfMA giúp doanh nghiệp đưa các quyết định thiết kế, sản xuất và lắp dựng lên giai đoạn đầu của dự án, nơi chi phí thay đổi thấp nhưng tác động tạo ra lớn nhất.' },
-    { img: 'project-my-thuat-do-thi', w: 900, h: 1327, title: 'Mỹ thuật đô thị', cat: 'Dự án tiêu biểu', desc: BOARD_DESC },
-    { img: 'field-big', w: 600, h: 500, title: 'Mái vòm thép tham số', cat: 'Lĩnh vực hoạt động', desc: 'Nghiên cứu, đào tạo và chuyển giao: ba lĩnh vực hoạt động chính của Đông xưởng.' },
-    { img: 'nam-xuong-1', w: 375, h: 350, title: 'Tư vấn thiết kế', cat: 'Nam xưởng', desc: NAM_DESC },
-    { img: 'project-kien-truc-canh-quan-2', w: 900, h: 1327, title: 'Kiến trúc, cảnh quan (phần 2)', cat: 'Dự án tiêu biểu', desc: BOARD_DESC },
-    { img: 'about-2', w: 600, h: 396, title: 'Mô hình quy hoạch mái vòm lưới', cat: 'Casa⁺', desc: CASA_DESC },
-    { img: 'project-gia-cong-ban-ve', w: 900, h: 1327, title: 'Gia công bản vẽ', cat: 'Dự án tiêu biểu', desc: BOARD_DESC },
-    { img: 'nam-xuong-3', w: 375, h: 350, title: 'Triển khai thiết kế', cat: 'Nam xưởng', desc: NAM_DESC }
+   {
+    "img": "board/b00",
+    "w": 564,
+    "h": 564,
+    "title": "Gạch gốm điêu khắc nhiều màu đất",
+    "cat": "Gốm in 3D",
+    "note": "Our favorite (and timeless) summer neutral color story  Renato Sabatino : compressed ceramics  #ceramicart #earthy #summerneutrals #colorstory #sculpture #ceramicsculpture #slowluxury",
+    "domain": "instagram.com",
+    "link": "https://www.instagram.com/p/C6q6NKhONEE/",
+    "pin": "https://www.pinterest.com/pin/488429522111908831/"
+   },
+   {
+    "img": "board/b02",
+    "w": 564,
+    "h": 564,
+    "title": "Rạn san hô đô thị in 3D từ nấm sợi",
+    "cat": "Vật liệu sinh học",
+    "note": "This 3D printed urban reef is constructed from mycelium to increase biodiversity in cities! – Yanko Design",
+    "domain": "yankodesign.com",
+    "link": "https://www.yankodesign.com/2021/11/03/this-3d-printed-urban-reef-is-constructed-from-mycelium-to-increase-biodiversity-in-cities/amp/",
+    "pin": "https://www.pinterest.com/pin/488429522111907592/"
+   },
+   {
+    "img": "board/b04",
+    "w": 564,
+    "h": 759,
+    "title": "Ghế bê tông in 3D",
+    "cat": "Bê tông in 3D",
+    "note": "",
+    "domain": "instagram.com",
+    "link": "https://www.instagram.com/p/DTwVSLJCEyF/",
+    "pin": "https://www.pinterest.com/pin/488429522111906539/"
+   },
+   {
+    "img": "board/b07",
+    "w": 564,
+    "h": 705,
+    "title": "Bề mặt đất sét đan lưới",
+    "cat": "Gốm in 3D",
+    "note": "",
+    "domain": "instagram.com",
+    "link": "https://www.instagram.com/p/DHTROQHMOnI/?img_index=2",
+    "pin": "https://www.pinterest.com/pin/488429522111906525/"
+   },
+   {
+    "img": "board/b10",
+    "w": 564,
+    "h": 558,
+    "title": "Khối GFRP hoa văn chéo",
+    "cat": "Gạch và mặt dựng",
+    "note": "Instagram 上的 Pratt School of Architecture：「 GFRP (Glass Fiber Reinforced Polymer) Detail and Physical Construct Developed by #PrattSoA Undergraduate Students Barbara MIGLIETTI… 」",
+    "domain": "instagram.com",
+    "link": "https://www.instagram.com/p/Blfe9GeAwU0/?utm_source=ig_share_sheet&igshid=1i59xqxmdsyzw",
+    "pin": "https://www.pinterest.com/pin/488429522111906519/"
+   },
+   {
+    "img": "board/b13",
+    "w": 526,
+    "h": 800,
+    "title": "Tháp in 3D xoắn",
+    "cat": "Bê tông in 3D",
+    "note": "",
+    "domain": "",
+    "link": "https://www.google.com/url?sa=i&url=https://svenpfeiffer.de/project/printed-column&psig=AOvVaw2yl-CnjMbmH6AGUm5GRgZi&ust=1718623054902000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOiT2Pj_34YDFQAAAAAdAAAAABAJ",
+    "pin": "https://www.pinterest.com/pin/488429522111906507/"
+   },
+   {
+    "img": "board/b14",
+    "w": 564,
+    "h": 705,
+    "title": "Tường in 3D vân sóng",
+    "cat": "Gạch và mặt dựng",
+    "note": "Materials and textures matter. 💪 Not just for how things look, but how they feel, age, and impact the world around us.  At Fab.Pub we’re always experimenting with new and unexpected materials. From sugar-based, industrially compostable bioplastics and recycled coffee to reclaimed timber and metallic filaments, each one tells a story.  Are you curious about the possibilities for your next piece or project? Let’s talk materials and textures🌱  Find out more about our materials on our website fab...",
+    "domain": "instagram.com",
+    "link": "https://www.instagram.com/p/DQUVPGqjVNK/?img_index=5",
+    "pin": "https://www.pinterest.com/pin/488429522111906506/"
+   },
+   {
+    "img": "board/b22",
+    "w": 564,
+    "h": 702,
+    "title": "Tấm mặt dựng đất nung in 3D",
+    "cat": "Gạch và mặt dựng",
+    "note": "Terracotta in the making! We’re experimenting with new tile designs for an upcoming project; blending traditional materials with fresh ideas to create something bold and new.🧱   #bespoke #terracotta #expression #ornamentation #craftmanship #beauty #materialtest #inprogress",
+    "domain": "instagram.com",
+    "link": "https://www.instagram.com/p/DJlZgrSMUvd/",
+    "pin": "https://www.pinterest.com/pin/488429522111898351/"
+   },
+   {
+    "img": "board/b25",
+    "w": 564,
+    "h": 376,
+    "title": "Gạch tráng men in 3D",
+    "cat": "Tráng men",
+    "note": "",
+    "domain": "parametric-architecture.com",
+    "link": "https://parametric-architecture.com/design-tech-talk-7-0/",
+    "pin": "https://www.pinterest.com/pin/488429522111840644/"
+   },
+   {
+    "img": "board/b28",
+    "w": 564,
+    "h": 846,
+    "title": "Cột in 3D nhiều màu",
+    "cat": "Bê tông in 3D",
+    "note": "Making our crazy column designs structural  At Vertico, we push the boundaries of 3D concrete printing, creating columns that are both visually striking and structurally sound. While our designs embrace intricate and modern aesthetics, they never compromise on strength and functionality.  In the photos, you can see a textbook example of 3D-printed, thin-walled formwork reinforced with standard self-compacting concrete, offering exceptional compressive strength.  Stay tuned as we continue to explore new ways to combine design freedom with engineering excellence!",
+    "domain": "vertico.com",
+    "link": "https://www.vertico.com/projects/structural-columns",
+    "pin": "https://www.pinterest.com/pin/488429522111840403/"
+   },
+   {
+    "img": "board/b38",
+    "w": 528,
+    "h": 660,
+    "title": "Mặt dựng điêu khắc bằng gạch",
+    "cat": "Gạch và mặt dựng",
+    "note": "Sculpting Facades: Using New Technology to Create a More Textural and Expressive Architecture | ArchDaily",
+    "domain": "archdaily.com",
+    "link": "https://www.archdaily.com/1012032/sculpting-facades-using-new-technology-to-create-a-more-textural-and-expressive-architecture",
+    "pin": "https://www.pinterest.com/pin/488429522111818625/"
+   },
+   {
+    "img": "board/b40",
+    "w": 564,
+    "h": 752,
+    "title": "Công viên công cộng in 3D",
+    "cat": "Bê tông in 3D",
+    "note": "World's first 3D printed public park features 3D printed sculptures, benches, flower beds in China",
+    "domain": "worldarchitecture.org",
+    "link": "https://worldarchitecture.org/architecture-news/emhne/world-s-first-3d-printed-public-park-features-3d-printed-sculptures-benches-flower-beds-in-china.html",
+    "pin": "https://www.pinterest.com/pin/488429522111818620/"
+   },
+   {
+    "img": "board/b43",
+    "w": 564,
+    "h": 752,
+    "title": "Gạch tráng men mới ra lò",
+    "cat": "Tráng men",
+    "note": "The first tiles are out of the kiln. 🍃 \nFor our new design in Turkey, more soon!\n\n#architecturalceramics #digitalcraftsmanship #bespokeceramics #algorithmicdesign #roboticfabrication",
+    "domain": "instagram.com",
+    "link": "https://www.instagram.com/p/DZK1uJQjbAa/",
+    "pin": "https://www.pinterest.com/pin/488429522111796187/"
+   },
+   {
+    "img": "board/b44",
+    "w": 564,
+    "h": 374,
+    "title": "Gạch tổ ong kết hợp gạch nung",
+    "cat": "Gạch và mặt dựng",
+    "note": "",
+    "domain": "3druck.com",
+    "link": "https://3druck.com/3d-druckmaterialien/unipor-zeigt-3d-druck-von-mauerziegeln-2277966/",
+    "pin": "https://www.pinterest.com/pin/488429522111796184/"
+   },
+   {
+    "img": "board/b46",
+    "w": 564,
+    "h": 705,
+    "title": "Tường gạch đất nung in 3D",
+    "cat": "Gạch và mặt dựng",
+    "note": "",
+    "domain": "design-milk.com",
+    "link": "https://design-milk.com/a-historic-building-with-a-3d-printed-ceramic-facade-in-amsterdam/",
+    "pin": "https://www.pinterest.com/pin/488429522111796166/"
+   },
+   {
+    "img": "board/b47",
+    "w": 564,
+    "h": 751,
+    "title": "Bồn cây bê tông in 3D dạng hữu cơ",
+    "cat": "Bê tông in 3D",
+    "note": "",
+    "domain": "enr.com",
+    "link": "https://www.enr.com/articles/61333-3d-printed-concrete-finds-its-footing",
+    "pin": "https://www.pinterest.com/pin/488429522111796163/"
+   }
   ];
 
   var work = document.getElementById('work');
@@ -64,7 +227,7 @@
         '<a class="pin-media" href="' + DX.img(p.img) + '" data-open style="aspect-ratio:' + p.w + '/' + p.h + '" aria-label="Xem dự án: ' + DX.esc(p.title) + '">' +
           '<img src="' + DX.img(p.img) + '" width="' + p.w + '" height="' + p.h + '" alt="' + DX.esc(p.title) + '" loading="lazy" decoding="async">' +
           '<span class="pin-shade"></span>' +
-          '<span class="pin-cap"><strong>' + DX.esc(p.title) + '</strong><span>' + DX.esc(p.cat) + '</span></span>' +
+          '<span class="pin-cap"><strong>' + DX.esc(p.title) + '</strong><span>' + DX.esc(p.cat) + (p.domain ? ', ' + DX.esc(p.domain) : '') + '</span></span>' +
         '</a>' +
         '<div class="pin-actions"><button class="icon-btn pin-share" type="button" data-share aria-label="Chia sẻ ' + DX.esc(p.title) + '">' + DX.icon('share') + '</button></div>' +
       '</div>';
@@ -113,7 +276,14 @@
     mImg.width = p.w; mImg.height = p.h; mImg.alt = p.title;
     modal.querySelector('.closeup-cat').textContent = p.cat;
     modal.querySelector('#closeup-title').textContent = p.title;
-    modal.querySelector('.closeup-desc').textContent = p.desc;
+    var desc = modal.querySelector('.closeup-desc');
+    desc.textContent = p.note ? '“' + p.note + '”' : '';
+    desc.hidden = !p.note;
+    modal.querySelector('.closeup-src').textContent = p.domain ? 'Nguồn: ' + p.domain : 'Nguồn: Pinterest';
+    var srcBtn = modal.querySelector('[data-src]');
+    srcBtn.href = p.link || p.pin;
+    srcBtn.hidden = !p.link;
+    modal.querySelector('[data-pin]').href = p.pin;
     modal.querySelector('.closeup-nav.prev').hidden = i === 0;
     modal.querySelector('.closeup-nav.next').hidden = i === WORK.length - 1;
     modal.querySelector('.closeup').scrollTop = 0;

@@ -60,6 +60,12 @@ python3 tools/build.py
 - `assets/js/hero.js`: tải khung hình từ thưa đến dày, vẽ lên canvas theo tiến độ cuộn, đổi 4 chương chữ và thước đo lớp in. Chế độ giảm chuyển động hiện ảnh tĩnh.
 - Muốn thay bằng render Rhino/Grasshopper của Đông xưởng: xuất 120 ảnh, đặt tên `000.webp`…`119.webp` vào hai thư mục trên. Không cần sửa code.
 
+## Ảnh “Dự án tiêu biểu” (trang chủ)
+
+- 16 ảnh lấy từ board Pinterest [Tx: In3D + Tráng men](https://www.pinterest.com/Dongxuongcasa/tx-in3d-%2B-tr%C3%A1ng-men/), lưu tại `assets/img/board/`. Danh sách, tiêu đề, nhóm và nguồn gốc (domain, link gốc, link ghim) nằm trong mảng `WORK` của `assets/js/home.js`.
+- Phần lớn ảnh là tác phẩm của tác giả khác (Instagram, ArchDaily, Dezeen, Yanko Design…). Mỗi ảnh hiện nguồn trong modal, kèm nút “Xem nguồn gốc” và “Xem trên Pinterest”.
+- Ảnh dự án cũ (`assets/img/project-*.webp`, `signature-dfma.webp`) vẫn còn trong thư mục, chỉ không còn dùng trên trang chủ.
+
 ## Lưu ý
 
 - Đăng nhập, đăng ký: form có kiểm tra dữ liệu, nhưng chưa nối với hệ thống tài khoản. Sau khi gửi, người dùng được dẫn sang hệ thống học tập hiện tại.
