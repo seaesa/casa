@@ -13,6 +13,13 @@
     return;
   }
 
+  // Remember recently viewed courses for the account page
+  try {
+    var recent = JSON.parse(localStorage.getItem('dx-recent') || '[]').filter(function (x) { return x !== c.slug; });
+    recent.unshift(c.slug);
+    localStorage.setItem('dx-recent', JSON.stringify(recent.slice(0, 8)));
+  } catch (e) { /* private mode */ }
+
   var catLabel = DX.CATS[c.cat];
   document.title = c.title + ' | Đông xưởng';
   var meta = document.querySelector('meta[name="description"]');

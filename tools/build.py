@@ -36,6 +36,8 @@ PAGES = {
                         desc="Chính sách bảo mật thông tin khách hàng của C.A.S JSC."),
     "terms":       dict(title="Điều khoản dịch vụ | Đông xưởng", nav="terms", scripts=["docs"], doc="dieu-khoan-dich-vu",
                         desc="Điều khoản dịch vụ áp dụng cho học viên của C.A.S JSC."),
+    "account":     dict(title="Trang cá nhân | Đông xưởng", nav="account", scripts=["courses-data", "account"],
+                        desc="Trang cá nhân học viên Đông xưởng: thông tin tài khoản, khóa học đã lưu và xem gần đây."),
     "payment":     dict(title="Quy định về thanh toán | Đông xưởng", nav="payment", scripts=["docs"], doc="quy-dinh-ve-thanh-toan",
                         desc="Quy định về thanh toán, đổi trả và hoàn tiền tại Đông xưởng."),
 }
@@ -96,9 +98,20 @@ def header(page):
       <input id="site-q" name="q" type="search" placeholder="Tìm khóa học, dự án, mentor" autocomplete="off" enterkeyhint="search">
       <button class="icon-btn search-clear" type="button" aria-label="Xóa từ khóa" hidden>{icon("close")}</button>
     </form>
-    <div class="header-actions">
+    <div class="header-actions" data-auth-out>
       <button class="btn btn-ghost" type="button" data-auth="login">Đăng nhập</button>
       <button class="btn btn-red" type="button" data-auth="register">Đăng ký</button>
+    </div>
+    <div class="user-menu" data-auth-in>
+      <button class="user-btn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="user-pop">
+        <span class="avatar is-red" data-user-initials></span><span class="user-name" data-user-name></span>{icon("chevron-down")}
+      </button>
+      <div class="user-pop" id="user-pop" role="menu" aria-label="Tài khoản" hidden>
+        <div class="user-pop-head"><strong data-user-name></strong><span data-user-email></span></div>
+        <a role="menuitem" href="account.html">{icon("user")}Trang cá nhân</a>
+        <a role="menuitem" href="account.html#da-luu">{icon("bookmark")}Khóa học đã lưu</a>
+        <button role="menuitem" type="button" data-logout>{icon("logout")}Đăng xuất</button>
+      </div>
     </div>
     <button class="icon-btn menu-toggle" type="button" aria-controls="drawer" aria-expanded="false" aria-label="Mở menu">{icon("menu")}</button>
   </div>
@@ -118,9 +131,13 @@ def drawer(page):
     <nav class="drawer-nav" aria-label="Điều hướng chính (di động)">{main}</nav>
     <nav class="drawer-sub" aria-label="Thông tin">{sub}</nav>
   </div>
-  <div class="drawer-foot">
+  <div class="drawer-foot" data-auth-out>
     <button class="btn btn-ghost" type="button" data-auth="login">Đăng nhập</button>
     <button class="btn btn-red" type="button" data-auth="register">Đăng ký</button>
+  </div>
+  <div class="drawer-user" data-auth-in>
+    <a class="drawer-me" href="account.html"><span class="avatar is-red" data-user-initials></span><span><strong data-user-name></strong><small data-user-email></small></span>{icon("chevron-right")}</a>
+    <button class="btn btn-ghost btn-block" type="button" data-logout>{icon("logout")}Đăng xuất</button>
   </div>
 </aside>'''
 
@@ -139,17 +156,15 @@ def auth_dialog():
         <button type="button" role="tab" id="tab-register" data-tab="register" aria-controls="panel-register" aria-selected="false" tabindex="-1">Đăng ký</button>
       </div>
       <form role="tabpanel" id="panel-login" data-panel="login" aria-labelledby="tab-login" novalidate>
-        <div class="form-alert" tabindex="-1" hidden>Tài khoản học được quản lý trên hệ thống học tập của Đông xưởng. <a class="link" href="https://dongxuong.casa-evolution.com/" target="_blank" rel="noopener">Tiếp tục đăng nhập tại đây</a>.</div>
-        <div class="field"><label for="li-email">Email</label><input class="input" id="li-email" type="email" autocomplete="email" required data-label="email"><span class="field-error" aria-live="polite"></span></div>
-        <div class="field"><label for="li-pass">Mật khẩu</label><input class="input" id="li-pass" type="password" autocomplete="current-password" required minlength="6" data-label="mật khẩu"><span class="field-error" aria-live="polite"></span></div>
+        <div class="field"><label for="li-email">Email hoặc tên đăng nhập</label><input class="input" id="li-email" type="text" inputmode="email" autocomplete="username" autocapitalize="off" spellcheck="false"><span class="field-error" aria-live="polite"></span></div>
+        <div class="field"><label for="li-pass">Mật khẩu</label><input class="input" id="li-pass" type="password" autocomplete="current-password"><span class="field-error" aria-live="polite"></span></div>
         <button class="btn btn-red btn-lg btn-block" type="submit">Đăng nhập</button>
       </form>
       <form role="tabpanel" id="panel-register" data-panel="register" aria-labelledby="tab-register" novalidate hidden>
-        <div class="form-alert" tabindex="-1" hidden>Tài khoản học được tạo trên hệ thống học tập của Đông xưởng. <a class="link" href="https://dongxuong.casa-evolution.com/" target="_blank" rel="noopener">Tiếp tục đăng ký tại đây</a>.</div>
-        <div class="field"><label for="re-name">Họ và tên</label><input class="input" id="re-name" type="text" autocomplete="name" required data-label="họ và tên"><span class="field-error" aria-live="polite"></span></div>
-        <div class="field"><label for="re-email">Email</label><input class="input" id="re-email" type="email" autocomplete="email" required data-label="email"><span class="field-error" aria-live="polite"></span></div>
-        <div class="field"><label for="re-phone">Số điện thoại</label><input class="input" id="re-phone" type="tel" autocomplete="tel" inputmode="tel" required data-label="số điện thoại"><span class="field-error" aria-live="polite"></span></div>
-        <div class="field"><label for="re-pass">Mật khẩu</label><input class="input" id="re-pass" type="password" autocomplete="new-password" required minlength="6" data-label="mật khẩu"><span class="field-error" aria-live="polite"></span></div>
+        <div class="field"><label for="re-name">Họ và tên</label><input class="input" id="re-name" type="text" autocomplete="name"><span class="field-error" aria-live="polite"></span></div>
+        <div class="field"><label for="re-email">Email</label><input class="input" id="re-email" type="text" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false"><span class="field-error" aria-live="polite"></span></div>
+        <div class="field"><label for="re-phone">Số điện thoại</label><input class="input" id="re-phone" type="text" autocomplete="tel" inputmode="tel"><span class="field-error" aria-live="polite"></span></div>
+        <div class="field"><label for="re-pass">Mật khẩu</label><input class="input" id="re-pass" type="password" autocomplete="new-password"><span class="field-error" aria-live="polite"></span></div>
         <button class="btn btn-red btn-lg btn-block" type="submit">Tạo tài khoản</button>
         <p class="form-note">Khi đăng ký, bạn đồng ý với <a class="link" href="terms.html">Điều khoản dịch vụ</a> và <a class="link" href="privacy.html">Chính sách bảo mật</a>.</p>
       </form>
@@ -344,6 +359,7 @@ def build():
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>try{{if(localStorage.getItem("dx-user"))document.documentElement.setAttribute("data-session","in")}}catch(e){{}}</script>
 <title>{meta["title"]}</title>
 <meta name="description" content="{html.escape(meta["desc"])}">
 <meta name="theme-color" content="#ffffff">

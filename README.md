@@ -20,6 +20,7 @@ python3 -m http.server 5173
 | `/contact/` | `contact/index.html` | Liên hệ |
 | `/instructors/` | `instructors/index.html` | Giảng viên |
 | `/help/` | `help/index.html` | Trợ giúp |
+| `/account/` | `account/index.html` | Trang cá nhân (đăng nhập giả lập) |
 | `/privacy/`, `/terms/`, `/payment/` | `…/index.html` | Chính sách, điều khoản, thanh toán |
 
 Mỗi trang nằm trong thư mục riêng nên URL sạch chạy được trên mọi hosting tĩnh (Netlify, Vercel, GitHub Pages, Nginx, Apache…) mà không cần cấu hình rewrite. Link cũ dạng `courses.html?q=…` vẫn hoạt động: file `courses.html` ở thư mục gốc tự chuyển sang `/courses/?q=…`. `/index.html` được rút gọn thành `/`.
@@ -68,6 +69,7 @@ python3 tools/build.py
 
 ## Lưu ý
 
-- Đăng nhập, đăng ký: form có kiểm tra dữ liệu, nhưng chưa nối với hệ thống tài khoản. Sau khi gửi, người dùng được dẫn sang hệ thống học tập hiện tại.
+- Đăng nhập, đăng ký là **giả lập**: nhập gì cũng thành công (kể cả để trống, không kiểm tra định dạng), tài khoản lưu trong `localStorage` (khóa `dx-user`). Không có máy chủ, không kiểm tra mật khẩu. Đăng nhập rồi sẽ có menu tài khoản trên header và trang cá nhân `/account/` (thông tin cá nhân, khóa học đã lưu, xem gần đây, đăng xuất).
+- Trạng thái đăng nhập nằm ở thuộc tính `data-session="in|out"` của thẻ `<html>`. Phần tử chỉ hiện khi đã/chưa đăng nhập dùng `data-auth-in` / `data-auth-out`.
 - Nút “Đăng ký khóa học” dẫn đến trang khóa học tương ứng trên hệ thống gốc.
 - Mục “Đã lưu” lưu trong trình duyệt (localStorage).

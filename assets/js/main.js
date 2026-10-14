@@ -45,8 +45,8 @@
     return '';
   };
   DX.initials = function (name) {
-    var p = name.trim().split(/\s+/);
-    return (p[0][0] + p[p.length - 1][0]).toUpperCase();
+    var p = String(name || '?').trim().split(/\s+/);
+    return (p.length > 1 ? p[0][0] + p[p.length - 1][0] : p[0].slice(0, 2)).toUpperCase();
   };
   /* ---------- storage (best effort) ---------- */
   var KEY = 'dx-saved';
@@ -259,6 +259,74 @@
     input.addEventListener('input', function () { if (DX.onSearch) DX.onSearch(input.value, false); });
   }
 
+  /* ---------- mock account (localStorage) ---------- */
+  var USER_KEY = 'dx-user';
+  DX.user = function () {
+    try { return JSON.parse(localStorage.getItem(USER_KEY) || 'null'); } catch (e) { return null; }
+  };
+  DX.nameFromEmail = function (email) {
+    var local = String(email).split('@')[0].replace(/[._\-]+/g, ' ').replace(/\d+/g, ' ').trim();
+    if (!local) return 'Học viên';
+    return local.split(/\s+/).map(function (w) { return w[0].toUpperCase() + w.slice(1); }).join(' ');
+  };
+  DX.renderUser = function () {
+    var u = DX.user();
+    document.documentElement.setAttribute('data-session', u ? 'in' : 'out');
+    if (!u) return;
+    document.querySelectorAll('[data-user-name]').forEach(function (el) { el.textContent = u.name; });
+    document.querySelectorAll('[data-user-email]').forEach(function (el) { el.textContent = u.email; });
+    document.querySelectorAll('[data-user-initials]').forEach(function (el) { el.textContent = DX.initials(u.name); });
+  };
+  DX.setUser = function (u) {
+    try { localStorage.setItem(USER_KEY, JSON.stringify(u)); } catch (e) { /* private mode */ }
+    DX.renderUser();
+    document.dispatchEvent(new CustomEvent('dx:auth', { detail: { user: u } }));
+  };
+  DX.logout = function () {
+    try { localStorage.removeItem(USER_KEY); } catch (e) {}
+    DX.renderUser();
+    document.dispatchEvent(new CustomEvent('dx:auth', { detail: { user: null } }));
+    DX.toast('Đã đăng xuất');
+  };
+  DX.renderUser();
+
+  // Account dropdown in the header
+  var userBtn = document.querySelector('.user-btn');
+  var userPop = document.getElementById('user-pop');
+  function closeUserPop(focusBtn) {
+    if (!userPop || userPop.hidden) return;
+    userPop.hidden = true;
+    userBtn.setAttribute('aria-expanded', 'false');
+    if (focusBtn) userBtn.focus();
+  }
+  if (userBtn && userPop) {
+    userBtn.addEventListener('click', function () {
+      var open = userPop.hidden;
+      userPop.hidden = !open;
+      userBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) userPop.querySelector('[role="menuitem"]').focus();
+    });
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.user-menu')) closeUserPop(false);
+    });
+    userPop.addEventListener('keydown', function (e) {
+      var items = Array.prototype.slice.call(userPop.querySelectorAll('[role="menuitem"]'));
+      var i = items.indexOf(document.activeElement);
+      if (e.key === 'Escape') { e.preventDefault(); closeUserPop(true); }
+      else if (e.key === 'ArrowDown') { e.preventDefault(); items[(i + 1) % items.length].focus(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); items[(i - 1 + items.length) % items.length].focus(); }
+      else if (e.key === 'Tab') closeUserPop(false);
+    });
+  }
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('[data-logout]')) return;
+    e.preventDefault();
+    closeUserPop(false);
+    var drawerEl = document.getElementById('drawer');
+    if (drawerEl && drawerEl.classList.contains('is-open')) DX.closeLayer(drawerEl);
+    DX.logout();
+  });
+
   /* ---------- auth dialog ---------- */
   var auth = document.getElementById('auth');
   if (auth) {
@@ -284,22 +352,31 @@
       });
     });
     document.addEventListener('click', function (e) {
-      var b = e.target.closest('[data-auth]');
+      var b = e.target.closest('button[data-auth], a[data-auth]');
       if (!b) return;
       e.preventDefault();
       var returnTo = b;
       if (drawer && drawer.contains(b)) { DX.closeLayer(drawer); returnTo = toggle; }
       setTab(b.dataset.auth);
-      auth.querySelectorAll('.form-alert').forEach(function (a) { a.hidden = true; });
       DX.openLayer(auth, { returnTo: returnTo });
     });
+    // Mock sign-in: any email + password is accepted; the profile lives in localStorage.
     auth.querySelectorAll('form').forEach(function (f) {
       f.addEventListener('submit', function (e) {
         e.preventDefault();
-        if (!DX.validate(f)) return;
-        var alert = f.querySelector('.form-alert');
-        alert.hidden = false;
-        alert.focus();
+        // No validation at all: whatever is typed (or nothing) signs in.
+        var isRegister = f.dataset.panel === 'register';
+        var email = f.querySelector(isRegister ? '#re-email' : '#li-email').value.trim();
+        var prev = DX.user();
+        var user = (prev && email && prev.email === email) ? prev : { email: email, since: new Date().toISOString() };
+        var typedName = isRegister ? f.querySelector('#re-name').value.trim() : '';
+        if (isRegister) user.phone = f.querySelector('#re-phone').value.trim();
+        if (typedName) user.name = typedName;
+        else if (!user.name) user.name = email.indexOf('@') > 0 ? DX.nameFromEmail(email) : (email || 'Học viên');
+        DX.setUser(user);
+        f.reset();
+        DX.closeLayer(auth);
+        DX.toast((isRegister ? 'Đã tạo tài khoản. ' : '') + 'Xin chào, ' + user.name + '!');
       });
     });
   }

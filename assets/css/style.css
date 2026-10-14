@@ -190,6 +190,41 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .header-bar { gap: 8px; }
 }
 
+/* ---------- Mock auth state ---------- */
+/* <html data-session="in|out"> is set before paint by an inline head script, so nothing flashes.
+   (Not data-auth: that attribute marks the sign-in buttons and is matched with closest().) */
+html:not([data-session="in"]) [data-auth-in] { display: none !important; }
+html[data-session="in"] [data-auth-out] { display: none !important; }
+
+.user-menu { position: relative; margin-left: auto; flex: none; }
+.user-btn {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 4px 12px 4px 4px;
+  border-radius: var(--r-pill); background: var(--surface); box-shadow: inset 0 0 0 1px var(--line);
+  font-weight: 600; font-size: 15px; transition: background-color .15s;
+}
+.user-btn:hover, .user-btn[aria-expanded="true"] { background: var(--surface-2); }
+.user-btn .avatar { width: 36px; height: 36px; font-size: 13px; }
+.user-btn .i { width: 18px; height: 18px; color: var(--muted); transition: transform .2s var(--ease); }
+.user-btn[aria-expanded="true"] .i { transform: rotate(180deg); }
+.user-name { max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.user-pop {
+  position: absolute; right: 0; top: calc(100% + 8px); z-index: 70; width: 260px;
+  background: var(--bg); border-radius: var(--r-media); padding: 8px;
+  box-shadow: var(--shadow-pop), 0 0 0 1px var(--line);
+}
+.user-pop-head { padding: 10px 12px 12px; border-bottom: 1px solid var(--line); margin-bottom: 6px; }
+.user-pop-head strong { display: block; font-size: 15px; }
+.user-pop-head span { display: block; font-size: 13px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
+.user-pop [role="menuitem"] {
+  display: flex; align-items: center; gap: 10px; width: 100%; min-height: 42px; padding: 0 12px;
+  border-radius: 10px; font-size: 15px; text-align: left;
+}
+.user-pop [role="menuitem"]:hover, .user-pop [role="menuitem"]:focus-visible { background: var(--surface); outline: none; }
+.user-pop [role="menuitem"] .i { color: var(--muted); }
+.user-pop [data-logout] { color: var(--red-text); }
+.user-pop [data-logout] .i { color: currentColor; }
+@media (max-width: 1099px) { .user-menu { display: none !important; } }
+
 /* ---------- Drawer (mobile menu) ---------- */
 .scrim {
   position: fixed; inset: 0; z-index: 90;
@@ -223,6 +258,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .drawer-sub a { display: flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 12px; color: var(--text-2); font-size: 15px; }
 .drawer-sub a:hover, .drawer-sub a[aria-current="page"] { background: var(--surface); color: var(--text); }
 .drawer-foot { padding: 16px 20px calc(16px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.drawer-user { padding: 12px 16px calc(16px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); display: grid; gap: 10px; }
+.drawer-me { display: flex; align-items: center; gap: 12px; padding: 8px; border-radius: var(--r-media); }
+.drawer-me:hover { background: var(--surface); }
+.drawer-me > span:nth-child(2) { flex: 1; min-width: 0; }
+.drawer-me strong { display: block; }
+.drawer-me small { display: block; color: var(--muted); font-size: 13px; overflow: hidden; text-overflow: ellipsis; }
 
 /* ---------- Type & sections ---------- */
 .section { padding-block: 112px; }
@@ -843,6 +884,44 @@ a.tag:hover { background: var(--surface-3); }
 .mentor-courses span { font-size: 14.5px; font-weight: 600; line-height: 1.35; }
 .mentor-more { align-self: flex-start; }
 @media (max-width: 899px) { .mentors { grid-template-columns: 1fr; } .mentor { padding: 20px; } }
+
+/* Account (mock profile) */
+.account { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 40px; align-items: start; padding-bottom: 88px; }
+.account-side { position: sticky; top: calc(var(--header-h) + 20px); display: grid; gap: 16px; }
+.account-card { text-align: center; padding: 28px 20px; border-radius: var(--r-panel); background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
+.account-avatar { width: 84px; height: 84px; font-size: 28px; font-family: var(--font-display); margin: 0 auto 14px; }
+.account-name { font-family: var(--font-display); font-size: 24px; line-height: 1.2; overflow-wrap: anywhere; }
+.account-email { color: var(--text-2); font-size: 14.5px; margin-top: 4px; overflow-wrap: anywhere; }
+.account-since { color: var(--muted); font-size: 13px; margin-top: 8px; }
+.account-nav { display: grid; gap: 2px; }
+.account-nav a, .account-nav button {
+  display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 14px; border-radius: 12px;
+  font-size: 15px; font-weight: 500; color: var(--text-2); text-align: left; width: 100%;
+}
+.account-nav a:hover, .account-nav button:hover { background: var(--surface); color: var(--text); }
+.account-nav .count { margin-left: auto; font-size: 13px; color: var(--muted); }
+.account-nav [data-logout] { color: var(--red-text); }
+.account-section + .account-section { margin-top: 56px; }
+.account-section { scroll-margin-top: calc(var(--header-h) + 24px); }
+.account-section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+.account-panel { padding: 24px; border-radius: var(--r-panel); box-shadow: inset 0 0 0 1px var(--line-2); }
+.account-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
+.account-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.account-empty { padding: 28px; border-radius: var(--r-panel); background: var(--surface); color: var(--text-2); display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.account-guest .avatar .i { width: 32px; height: 32px; }
+@media (max-width: 899px) {
+  .account { grid-template-columns: 1fr; gap: 24px; padding-bottom: 56px; }
+  .account-side { position: static; }
+  .account-card { display: grid; grid-template-columns: auto 1fr; text-align: left; column-gap: 16px; padding: 18px; align-items: center; }
+  .account-avatar { width: 64px; height: 64px; font-size: 22px; margin: 0; grid-row: span 3; }
+  .account-name { font-size: 20px; }
+  .account-email, .account-since { margin-top: 2px; }
+  .account-nav { grid-auto-flow: column; grid-auto-columns: max-content; overflow-x: auto; scrollbar-width: none; gap: 6px; }
+  .account-nav::-webkit-scrollbar { display: none; }
+  .account-nav a, .account-nav button { background: var(--surface); border-radius: var(--r-pill); min-height: 40px; font-size: 14px; }
+  .account-panel { padding: 18px; }
+  .account-grid { grid-template-columns: 1fr; }
+}
 
 /* Docs (policies / help) */
 .doc-layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 56px; align-items: start; padding-bottom: 88px; }
