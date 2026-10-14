@@ -46,6 +46,13 @@ Sau khi sửa file trong `tools/src/`, `tools/content/` hoặc `assets/`, chạy
 python3 tools/build.py
 ```
 
+## Hero trang chủ (cuộn để in 3D)
+
+- Chuỗi 120 khung hình WebP trong `assets/hero/d/` (ngang 1280×720, cho máy tính) và `assets/hero/m/` (dọc 540×960, cho điện thoại; khung cắt bám theo vật thể).
+- Nguồn: video “3D printer creating large orange object in workshop” của Raphaël Quinet trên Pexels (giấy phép Pexels, dùng miễn phí kể cả thương mại): https://www.pexels.com/video/34254813/
+- `assets/js/hero.js`: tải khung hình từ thưa đến dày, vẽ lên canvas theo tiến độ cuộn, đổi 4 chương chữ và thước đo lớp in. Chế độ giảm chuyển động hiện ảnh tĩnh.
+- Muốn thay bằng render Rhino/Grasshopper của Đông xưởng: xuất 120 ảnh, đặt tên `000.webp`…`119.webp` vào hai thư mục trên. Không cần sửa code.
+
 ## Lưu ý
 
 - Đăng nhập, đăng ký: form có kiểm tra dữ liệu, nhưng chưa nối với hệ thống tài khoản. Sau khi gửi, người dùng được dẫn sang hệ thống học tập hiện tại.

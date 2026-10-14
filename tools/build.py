@@ -18,7 +18,7 @@ FONTS = ("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;6
          "&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap")
 
 PAGES = {
-    "index":       dict(title="Đông xưởng | Powered by Casa⁺", nav="home", scripts=["courses-data", "home"],
+    "index":       dict(title="Đông xưởng | Powered by Casa⁺", nav="home", scripts=["courses-data", "hero", "home"],
                         desc="Đông xưởng Casa: đào tạo và chuyển giao quy trình Computational Design, Rhino & Grasshopper cho cá nhân và doanh nghiệp ngành AEC."),
     "courses":     dict(title="Khóa học | Đông xưởng", nav="courses", scripts=["courses-data", "courses"],
                         desc="Lộ trình và khóa học Rhino, Grasshopper, Parametric Design tại Đông xưởng Casa."),
@@ -71,6 +71,7 @@ ICONS = {
     "pause": '<path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/>',
     "swipe": '<path d="M4 12h16M8 8l-4 4 4 4M16 8l4 4-4 4"/>',
     "image": '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/>',
+    "mouse": '<rect x="7" y="3" width="10" height="18" rx="5"/><path d="M12 7v4"/>',
     "file": '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/>',
     "facebook": '<path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z" fill="currentColor" stroke="none"/>',
     "youtube": '<path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z" fill="currentColor" stroke="none"/>',
@@ -299,7 +300,7 @@ def doc_page(page, meta):
 # ---------------------------------------------------------------- clean URLs
 # Mỗi trang được xuất ra <trang>/index.html để URL không có đuôi .html
 # (vd. /courses/, /course/?slug=...). Chạy được trên mọi hosting tĩnh, không cần rewrite.
-LINK_ATTR = re.compile(r'(\b(?:href|src|action|content|poster)=")(?!https?:|mailto:|tel:|#|data:|//)([^"]*)"')
+LINK_ATTR = re.compile(r'(\b(?:href|src|srcset|action|content|poster)=")(?!https?:|mailto:|tel:|#|data:|//)([^"]*)"')
 
 
 def clean_urls(doc, base):
@@ -318,8 +319,8 @@ def clean_urls(doc, base):
 
 
 def version(url):
-    """?v=<hash nội dung> cho CSS/JS để trình duyệt tải bản mới sau mỗi lần build."""
-    if not url.endswith((".css", ".js")):
+    """?v=<hash nội dung> cho CSS/JS/icon để trình duyệt tải bản mới sau mỗi lần build."""
+    if not (url.endswith((".css", ".js")) or url.startswith("assets/icons/")):
         return ""
     return "?v=" + hashlib.md5((ROOT / url).read_bytes()).hexdigest()[:8]
 
@@ -359,7 +360,10 @@ def build():
 <meta property="og:title" content="{meta["title"]}">
 <meta property="og:description" content="{html.escape(meta["desc"])}">
 <meta property="og:image" content="assets/img/signature-dfma.webp">
-<link rel="icon" type="image/webp" href="assets/img/logo.webp">
+<link rel="icon" href="assets/icons/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="assets/icons/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{FONTS}">
