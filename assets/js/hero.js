@@ -22,7 +22,7 @@
   // Place step labels along the vertical gauge (desktop)
   steps.forEach(function (li) { li.style.bottom = (parseFloat(li.dataset.at) * 100) + '%'; });
 
-  /* ---------- Static fallback (reduced motion) ---------- */
+  /* ---------- Static fallback (no canvas support) ---------- */
   function goStatic() {
     root.classList.add('is-static');
     chapters.forEach(function (c, i) { c.classList.toggle('is-active', i === 0); });
@@ -32,7 +32,10 @@
     if (src) src.srcset = DX.base + 'assets/hero/m/' + pad(FRAMES - 1) + '.webp';
     canvas.hidden = true;
   }
-  if (reduce.matches) { goStatic(); return; }
+  // Scrubbing is driven by the user's own scroll (like dragging a video timeline), so it stays on
+  // with prefers-reduced-motion. Windows reports "reduce" whenever "Show animations in Windows" is
+  // off, which is common. What reduced motion removes is the eased, inertial catch-up (see tick).
+  if (!ctx) { goStatic(); return; }
 
   /* ---------- Frame loading: coarse-to-fine so scrubbing works early ---------- */
   var set = null, images = [], loaded = [];
@@ -147,7 +150,7 @@
     ticking = false;
     // ease toward the scroll target for a smooth, film-like scrub
     var diff = target - current;
-    current = Math.abs(diff) < 0.0008 ? target : current + diff * 0.18;
+    current = (reduce.matches || Math.abs(diff) < 0.0008) ? target : current + diff * 0.18;
     updateUI(current);
     draw(wanted());
     if (current !== target) requestTick();
@@ -177,8 +180,6 @@
   window.addEventListener('resize', function () { resize(); startLoading(); onScroll(); });
   var onMq = function () { startLoading(); resize(); onScroll(); };
   portraitMq.addEventListener ? portraitMq.addEventListener('change', onMq) : portraitMq.addListener(onMq);
-  var onReduce = function () { if (reduce.matches) goStatic(); };
-  reduce.addEventListener ? reduce.addEventListener('change', onReduce) : reduce.addListener(onReduce);
 
   skip.addEventListener('click', function () {
     var end = root.getBoundingClientRect().bottom + window.scrollY - (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 72);
