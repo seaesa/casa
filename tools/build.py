@@ -48,34 +48,24 @@ SUB_NAV = [("instructors", "instructors.html", "Giảng viên"), ("help", "help.
 DOC_NAV = [("help", "help.html", "Trợ giúp"), ("privacy", "privacy.html", "Chính sách bảo mật"),
            ("terms", "terms.html", "Điều khoản dịch vụ"), ("payment", "payment.html", "Quy định về thanh toán")]
 
-ICONS = {
-    "search": '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
-    "menu": '<path d="M4 7h16M4 12h16M4 17h16"/>',
-    "close": '<path d="M6 6l12 12M18 6 6 18"/>',
-    "bookmark": '<path d="M6 4h12v16l-6-4-6 4z"/>',
-    "share": '<path d="M12 15V3M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/>',
-    "external": '<path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>',
-    "arrow-up-right": '<path d="M7 17 17 7M8 7h9v9"/>',
-    "arrow-up": '<path d="M12 19V5M5 12l7-7 7 7"/>',
-    "chevron-left": '<path d="m15 18-6-6 6-6"/>',
-    "chevron-right": '<path d="m9 18 6-6-6-6"/>',
-    "chevron-down": '<path d="m6 9 6 6 6-6"/>',
-    "plus": '<path d="M12 5v14M5 12h14"/>',
-    "phone": '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>',
-    "mail": '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
-    "map-pin": '<path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
-    "clock": '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
-    "user": '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
-    "building": '<path d="M4 21V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16M15 9h4a1 1 0 0 1 1 1v11M3 21h18M8 8h3M8 12h3M8 16h3"/>',
-    "play": '<path d="M8 5v14l11-7z" fill="currentColor"/>',
-    "pause": '<path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/>',
-    "swipe": '<path d="M4 12h16M8 8l-4 4 4 4M16 8l4 4-4 4"/>',
-    "image": '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/>',
-    "mouse": '<rect x="7" y="3" width="10" height="18" rx="5"/><path d="M12 7v4"/>',
-    "file": '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/>',
-    "facebook": '<path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z" fill="currentColor" stroke="none"/>',
-    "youtube": '<path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z" fill="currentColor" stroke="none"/>',
-}
+ICON_DIR = ROOT / "tools" / "icons"
+
+
+def load_icons():
+    """Tabler Icons (MIT, tabler.io/icons) đọc từ tools/icons/*.svg."""
+    icons = {}
+    for f in sorted(ICON_DIR.glob("*.svg")):
+        svg = f.read_text(encoding="utf-8")
+        inner = svg[svg.index(">", svg.index("<svg")) + 1: svg.rindex("</svg>")]
+        inner = re.sub(r'<path stroke="none" d="M0 0h24v24H0z" fill="none"\s*/>', "", inner).strip()
+        inner = re.sub(r"\s+", " ", inner)
+        if 'fill="currentColor"' in svg.split(">", 1)[0] + ">":
+            inner = f'<g fill="currentColor" stroke="none">{inner}</g>'
+        icons[f.stem] = inner
+    return icons
+
+
+ICONS = load_icons()
 
 
 def icon(name, cls=""):
@@ -178,7 +168,7 @@ def footer():
     courses = "".join(f'<li><a href="courses.html?cat={k}">{l}</a></li>' for k, l in cats)
     return f'''<section class="cover" aria-label="Khẩu hiệu">
   <img src="assets/img/footer-cover.webp" width="2000" height="720" alt="" loading="lazy">
-  <blockquote>“The second home of Architecture and Design students”<cite>Đông xưởng, Powered by Casa⁺</cite></blockquote>
+  <blockquote class="sr-only">“The second home of Architecture and Design students”, Đông xưởng, Powered by Casa⁺</blockquote>
 </section>
 <footer class="site-footer">
   <div class="container footer-grid">
@@ -190,7 +180,7 @@ def footer():
         <li>Hotline: <a href="tel:0763161286">0763 161 286</a></li>
         <li><a href="mailto:dongxuong@casa-evolution.com">dongxuong@casa-evolution.com</a></li>
         <li>Đại diện pháp luật: Trần Hoàng Thiện</li>
-        <li>Giờ mở cửa: 9:00 – 18:30</li>
+        <li>Giờ mở cửa: 9:00 - 18:30</li>
       </ul>
     </div>
     <nav aria-labelledby="f-intro"><h2 id="f-intro">Giới thiệu</h2><ul class="footer-links">{intro}</ul></nav>

@@ -170,22 +170,38 @@
     }
   });
 
-  /* ---------- header ---------- */
+  /* ---------- header border & back-to-top (IntersectionObserver, no scroll listener) ---------- */
   var header = document.querySelector('.site-header');
   var fabTop = document.querySelector('.fab-top');
-  var ticking = false;
-  function onScroll() {
-    ticking = false;
-    var y = window.scrollY;
-    if (header) header.classList.toggle('is-scrolled', y > 4);
-    if (fabTop) fabTop.classList.toggle('is-visible', y > 900);
+  function sentinel(top) {
+    var el = document.createElement('div');
+    el.setAttribute('aria-hidden', 'true');
+    el.style.cssText = 'position:absolute;left:0;width:1px;height:1px;pointer-events:none;top:' + top + 'px';
+    document.body.prepend(el);
+    return el;
   }
-  window.addEventListener('scroll', function () {
-    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
-  }, { passive: true });
-  onScroll();
+  if ('IntersectionObserver' in window) {
+    if (header) new IntersectionObserver(function (en) { header.classList.toggle('is-scrolled', !en[0].isIntersecting); }).observe(sentinel(4));
+    if (fabTop) new IntersectionObserver(function (en) { fabTop.classList.toggle('is-visible', !en[0].isIntersecting && en[0].boundingClientRect.top < 0); }).observe(sentinel(900));
+  }
   if (fabTop) fabTop.addEventListener('click', function () {
     window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  });
+
+  /* ---------- team video (about page) ---------- */
+  document.querySelectorAll('.team-video').forEach(function (box) {
+    var video = box.querySelector('video'), btn = box.querySelector('.media-toggle');
+    if (!video || !btn) return;
+    var paint = function () {
+      var playing = !video.paused;
+      btn.innerHTML = DX.icon(playing ? 'pause' : 'play');
+      btn.setAttribute('aria-label', playing ? 'Tạm dừng video' : 'Phát video');
+    };
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) video.play().catch(function () {});
+    video.addEventListener('play', paint);
+    video.addEventListener('pause', paint);
+    btn.addEventListener('click', function () { video.paused ? video.play() : video.pause(); });
+    paint();
   });
 
   /* ---------- drawer ---------- */

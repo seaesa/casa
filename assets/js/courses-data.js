@@ -161,7 +161,7 @@ window.COURSES = [
   "mentor": "Trần Hoàng Thiện",
   "badge": "",
   "price": null,
-  "desc": "“Khóa học này thuộc SERIES CÁC ỨNG DỤNG CHUYÊN NGÀNH PARAMETRIC KẾT HỢP RHINO & REVIT”Từ quản lý tọa độ dự án, liên thông dữ liệu, dựng hình học phức tạp, mặt đứng tham số, tường – sàn – mái tự động đến kiểm soát thông tin BIM và bóc tách khối lượng, khóa học giới thiệu 10 phương pháp ứng dụng Parametric Design giúp kết nối Rhino và Revit thành một quy trình làm việc thống nhất. Nội dung được xây dựng từ các bài toán thực tế nhằm nâng cao năng suất, độ chính xác và khả năng triển khai dự án trong môi trường BIM.",
+  "desc": "“Khóa học này thuộc SERIES CÁC ỨNG DỤNG CHUYÊN NGÀNH PARAMETRIC KẾT HỢP RHINO & REVIT”Từ quản lý tọa độ dự án, liên thông dữ liệu, dựng hình học phức tạp, mặt đứng tham số, tường, sàn, mái tự động đến kiểm soát thông tin BIM và bóc tách khối lượng, khóa học giới thiệu 10 phương pháp ứng dụng Parametric Design giúp kết nối Rhino và Revit thành một quy trình làm việc thống nhất. Nội dung được xây dựng từ các bài toán thực tế nhằm nâng cao năng suất, độ chính xác và khả năng triển khai dự án trong môi trường BIM.",
   "img": "c-rhino-revit",
   "url": "https://dongxuong.casa-evolution.com/course/10-cach-ung-dung-parametric-ket-hop-rhino-and-revit"
  },
@@ -260,7 +260,7 @@ window.COURSES = [
   "mentor": "Trần Hoàng Thiện",
   "badge": "Sale combo",
   "price": 5000000,
-  "desc": "GIA SƯ HƯỚNG DẪN DỰNG HÌNH DỰ ÁN – 1 THÁNG Chương trình Gia sư hướng dẫn dựng hình dự án – 1 tháng được thiết kế theo mô hình đào tạo cá nhân hóa, dành cho sinh viên, kiến trúc sư và nhà thiết kế đang thực hiện đồ án học thuật, nghiên cứu hoặc phát triển portfolio chuyên ngành. Nội dung học được xây dựng dựa trên đề tài và mục tiêu riêng của từng học viên. Trong quá trình học, giảng viên sẽ trực tiếp đồng hành hướng dẫn phát triển concept, xử lý hình khối, dựng mô hình 3D và hoàn thiện dự án bằng các công cụ như Rhinoceros, Grasshopper cùng các phần mềm hỗ trợ liên quan. Chương trình kết hợp giữa hướng dẫn chuyên môn và sửa bài thực hành, giúp học viên bám sát tiến độ dự án, nâng cao khả năng mô hình hóa, tư duy thiết kế và tối ưu quy trình làm việc trong môi trường thiết kế số. Mục tiêu của khóa học không chỉ là hoàn thiện sản phẩm đầu ra mà còn giúp học viên xây dựng nền tảng ứng dụng Computational Design, phát triển portfolio chất lượng và nâng cao năng lực đáp ứng yêu cầu học thuật cũng như thực tiễn nghề nghiệp trong lĩnh vực AEC.",
+  "desc": "GIA SƯ HƯỚNG DẪN DỰNG HÌNH DỰ ÁN (1 THÁNG). Chương trình Gia sư hướng dẫn dựng hình dự án (1 tháng) được thiết kế theo mô hình đào tạo cá nhân hóa, dành cho sinh viên, kiến trúc sư và nhà thiết kế đang thực hiện đồ án học thuật, nghiên cứu hoặc phát triển portfolio chuyên ngành. Nội dung học được xây dựng dựa trên đề tài và mục tiêu riêng của từng học viên. Trong quá trình học, giảng viên sẽ trực tiếp đồng hành hướng dẫn phát triển concept, xử lý hình khối, dựng mô hình 3D và hoàn thiện dự án bằng các công cụ như Rhinoceros, Grasshopper cùng các phần mềm hỗ trợ liên quan. Chương trình kết hợp giữa hướng dẫn chuyên môn và sửa bài thực hành, giúp học viên bám sát tiến độ dự án, nâng cao khả năng mô hình hóa, tư duy thiết kế và tối ưu quy trình làm việc trong môi trường thiết kế số. Mục tiêu của khóa học không chỉ là hoàn thiện sản phẩm đầu ra mà còn giúp học viên xây dựng nền tảng ứng dụng Computational Design, phát triển portfolio chất lượng và nâng cao năng lực đáp ứng yêu cầu học thuật cũng như thực tiễn nghề nghiệp trong lĩnh vực AEC.",
   "img": "c-workshop",
   "url": "https://dongxuong.casa-evolution.com/course/huong-dan-dung-hinh-du-an-thuc-te-1-thang"
  },
@@ -326,7 +326,7 @@ window.COURSES = [
   "mentor": "Trần Hoàng Thiện",
   "badge": "",
   "price": null,
-  "desc": "Ứng dụng Rhinoceros & Grasshopper trong thiết kế trang sức – kết hợp tư duy tạo hình 3D và Computational Design để phát triển các cấu trúc trang sức độc đáo, linh hoạt và có tính tùy biến cao.",
+  "desc": "Ứng dụng Rhinoceros & Grasshopper trong thiết kế trang sức, kết hợp tư duy tạo hình 3D và Computational Design để phát triển các cấu trúc trang sức độc đáo, linh hoạt và có tính tùy biến cao.",
   "img": "c-hv-nhu-y",
   "url": "https://dongxuong.casa-evolution.com/course/202607luu-quynh-nhu-yvlu-dh-van-lang"
  },
@@ -337,7 +337,7 @@ window.COURSES = [
   "mentor": "Trần Hoàng Thiện",
   "badge": "",
   "price": null,
-  "desc": "Ứng dụng Rhinoceros & Grasshopper trong thiết kế Sofa – kết hợp tư duy tạo hình 3D và Computational Design để phát triển các cấu trúc, hình thái Sofa độc đáo, linh hoạt và có tính tùy biến cao.",
+  "desc": "Ứng dụng Rhinoceros & Grasshopper trong thiết kế Sofa, kết hợp tư duy tạo hình 3D và Computational Design để phát triển các cấu trúc, hình thái Sofa độc đáo, linh hoạt và có tính tùy biến cao.",
   "img": "c-hv-van-truc",
   "url": "https://dongxuong.casa-evolution.com/course/202608nguyen-van-truc"
  }

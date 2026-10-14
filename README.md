@@ -13,7 +13,7 @@ python3 -m http.server 5173
 
 | URL | File | Nội dung |
 |---|---|---|
-| `/` | `index.html` | Trang chủ dạng lưới Pinterest |
+| `/` | `index.html` | Trang chủ: hero cuộn để in 3D, lộ trình, khóa học nổi bật, dự án dạng Pinterest, học viên và đối tác |
 | `/courses/` | `courses/index.html` | Danh sách khóa học, lọc `?cat=`, tìm `?q=` |
 | `/course/?slug=…` | `course/index.html` | Chi tiết khóa học |
 | `/about/` | `about/index.html` | Về chúng tôi |
@@ -45,6 +45,13 @@ Sau khi sửa file trong `tools/src/`, `tools/content/` hoặc `assets/`, chạy
 ```bash
 python3 tools/build.py
 ```
+
+## Giao diện
+
+- Một theme tối “xưởng chế tác” cho toàn site, nối liền với hero. Màu nhấn duy nhất là đỏ thương hiệu (`--red` cho nền nút, `--red-text` cho chữ trên nền tối). Toàn bộ màu khai báo bằng biến trong `:root` của `assets/css/style.css`.
+- Bo góc: nút dạng viên thuốc, ảnh và thẻ 16px, panel 24px.
+- Icon: [Tabler Icons](https://tabler.io/icons) (MIT), file SVG gốc trong `tools/icons/`, build gom thành sprite. Thêm icon: tải SVG từ Tabler vào thư mục này rồi build lại.
+- Ảnh có nền trắng (bìa khóa học, bảng dự án) đặt trên nền sáng `--plate`. Logo đối tác và bản đồ học viên được đảo màu bằng CSS để hợp nền tối.
 
 ## Hero trang chủ (cuộn để in 3D)
 

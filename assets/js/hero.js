@@ -156,15 +156,24 @@
 
   function onScroll() { target = progress(); requestTick(); }
 
-  // Only work while the hero is near the viewport
-  var visible = true;
+  // No scroll listener: while the hero is near the viewport (IntersectionObserver),
+  // a rAF loop samples the scroll position once per frame.
+  var visible = true, watching = false;
+  function watch() {
+    if (!visible) { watching = false; return; }
+    var t = progress();
+    if (t !== target) { target = t; requestTick(); }
+    requestAnimationFrame(watch);
+  }
+  function startWatch() { if (!watching) { watching = true; requestAnimationFrame(watch); } }
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (entries) {
       visible = entries[0].isIntersecting;
-      if (visible) onScroll(); else document.body.classList.remove('hero-pinned');
+      if (visible) { onScroll(); startWatch(); } else document.body.classList.remove('hero-pinned');
     }, { rootMargin: '200px 0px' }).observe(root);
+  } else {
+    startWatch();
   }
-  window.addEventListener('scroll', function () { if (visible) onScroll(); }, { passive: true });
   window.addEventListener('resize', function () { resize(); startLoading(); onScroll(); });
   var onMq = function () { startLoading(); resize(); onScroll(); };
   portraitMq.addEventListener ? portraitMq.addEventListener('change', onMq) : portraitMq.addListener(onMq);
