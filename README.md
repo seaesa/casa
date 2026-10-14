@@ -48,10 +48,10 @@ python3 tools/build.py
 
 ## Giao diện
 
-- Một theme tối “xưởng chế tác” cho toàn site, nối liền với hero. Màu nhấn duy nhất là đỏ thương hiệu (`--red` cho nền nút, `--red-text` cho chữ trên nền tối). Toàn bộ màu khai báo bằng biến trong `:root` của `assets/css/style.css`.
+- Theme trắng cho toàn site. Hero là khối tối duy nhất (nền của video, biến `--hero-bg`). Màu nhấn duy nhất là đỏ thương hiệu (`--red` cho nền nút, `--red-text` cho chữ). Toàn bộ màu khai báo bằng biến trong `:root` của `assets/css/style.css`.
 - Bo góc: nút dạng viên thuốc, ảnh và thẻ 16px, panel 24px.
 - Icon: [Tabler Icons](https://tabler.io/icons) (MIT), file SVG gốc trong `tools/icons/`, build gom thành sprite. Thêm icon: tải SVG từ Tabler vào thư mục này rồi build lại.
-- Ảnh có nền trắng (bìa khóa học, bảng dự án) đặt trên nền sáng `--plate`. Logo đối tác và bản đồ học viên được đảo màu bằng CSS để hợp nền tối.
+- Ảnh và thẻ có viền mảnh `--line` để ảnh nền trắng (bìa khóa học, bảng dự án) không lẫn vào nền trang.
 
 ## Hero trang chủ (cuộn để in 3D)
 
