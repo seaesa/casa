@@ -50,6 +50,28 @@
     "pin": "https://www.pinterest.com/pin/488429522111908831/"
    },
    {
+    "img": "board/b05",
+    "w": 564,
+    "h": 521,
+    "title": "Bộ bình gốm in 3D đất nung",
+    "cat": "Gốm in 3D",
+    "note": "Olivier Van Herpt, 3D printing",
+    "domain": "",
+    "link": "",
+    "pin": "https://www.pinterest.com/pin/488429522111906528/"
+   },
+   {
+    "img": "board/b06",
+    "w": 564,
+    "h": 564,
+    "title": "Bình gốm in 3D vân hữu cơ",
+    "cat": "Gốm in 3D",
+    "note": "Ceramic 3D printing | WASPclay | 3D Printers | WASP",
+    "domain": "3dwasp.com",
+    "link": "https://www.3dwasp.com/en/ceramic-3d-printing-wasp-clay/",
+    "pin": "https://www.pinterest.com/pin/488429522111906526/"
+   },
+   {
     "img": "board/b02",
     "w": 564,
     "h": 564,
@@ -59,6 +81,17 @@
     "domain": "yankodesign.com",
     "link": "https://www.yankodesign.com/2021/11/03/this-3d-printed-urban-reef-is-constructed-from-mycelium-to-increase-biodiversity-in-cities/amp/",
     "pin": "https://www.pinterest.com/pin/488429522111907592/"
+   },
+   {
+    "img": "board/b09",
+    "w": 468,
+    "h": 568,
+    "title": "Bình gốm in 3D gấp nếp",
+    "cat": "Gốm in 3D",
+    "note": "Olivier van Herpt 3D-prints functional ceramic objects",
+    "domain": "dezeen.com",
+    "link": "https://www.dezeen.com/2014/08/22/olivier-van-herpt-3d-printed-functional-ceramic-objects/amp/",
+    "pin": "https://www.pinterest.com/pin/488429522111906522/"
    },
    {
     "img": "board/b04",
@@ -72,6 +105,28 @@
     "pin": "https://www.pinterest.com/pin/488429522111906539/"
    },
    {
+    "img": "board/b11",
+    "w": 564,
+    "h": 564,
+    "title": "Bình đất nung in 3D dạng cánh",
+    "cat": "Gốm in 3D",
+    "note": "",
+    "domain": "",
+    "link": "",
+    "pin": "https://www.pinterest.com/pin/488429522111906510/"
+   },
+   {
+    "img": "board/b15",
+    "w": 564,
+    "h": 846,
+    "title": "Ghế đôn Buklo in 3D",
+    "cat": "Bê tông in 3D",
+    "note": "Entdecke den Sitzhocker «Buklo» - eine harmonische Fusion von Funktionalität und modernem Design. Gefertigt aus 3D-gedrucktem Beton, besticht der Hocker durch seine einzigartige Schlaufenform, die ihm nicht nur Stabilität verleiht, sondern auch als Stauraum für kleinere Objekte dient.",
+    "domain": "shop.affentranger3dcp.ch",
+    "link": "https://shop.affentranger3dcp.ch/collections/gartenmobel/products/hocker-buklo",
+    "pin": "https://www.pinterest.com/pin/488429522111906499/"
+   },
+   {
     "img": "board/b07",
     "w": 564,
     "h": 705,
@@ -81,6 +136,17 @@
     "domain": "instagram.com",
     "link": "https://www.instagram.com/p/DHTROQHMOnI/?img_index=2",
     "pin": "https://www.pinterest.com/pin/488429522111906525/"
+   },
+   {
+    "img": "board/b16",
+    "w": 468,
+    "h": 468,
+    "title": "Tấm ốp tường vân lụa",
+    "cat": "Gạch và mặt dựng",
+    "note": "",
+    "domain": "",
+    "link": "",
+    "pin": "https://www.pinterest.com/pin/488429522111906494/"
    },
    {
     "img": "board/b10",
@@ -94,6 +160,28 @@
     "pin": "https://www.pinterest.com/pin/488429522111906519/"
    },
    {
+    "img": "board/b17",
+    "w": 564,
+    "h": 318,
+    "title": "Vật thể gốm dạng cánh hoa",
+    "cat": "Gốm in 3D",
+    "note": "",
+    "domain": "designwanted.com",
+    "link": "https://designwanted.com/nyxo-primavera-furniture-3d-printed/",
+    "pin": "https://www.pinterest.com/pin/488429522111906493/"
+   },
+   {
+    "img": "board/b18",
+    "w": 564,
+    "h": 423,
+    "title": "Hệ gạch thông gió lắp ghép",
+    "cat": "Gạch và mặt dựng",
+    "note": "Manufatti - Elementos Cerâmicos",
+    "domain": "manufatti.com.br",
+    "link": "https://www.manufatti.com.br/",
+    "pin": "https://www.pinterest.com/pin/488429522111898359/"
+   },
+   {
     "img": "board/b13",
     "w": 526,
     "h": 800,
@@ -103,6 +191,17 @@
     "domain": "",
     "link": "https://www.google.com/url?sa=i&url=https://svenpfeiffer.de/project/printed-column&psig=AOvVaw2yl-CnjMbmH6AGUm5GRgZi&ust=1718623054902000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOiT2Pj_34YDFQAAAAAdAAAAABAJ",
     "pin": "https://www.pinterest.com/pin/488429522111906507/"
+   },
+   {
+    "img": "board/b24",
+    "w": 564,
+    "h": 693,
+    "title": "Khối gạch rỗng in 3D",
+    "cat": "Gạch và mặt dựng",
+    "note": "",
+    "domain": "",
+    "link": "",
+    "pin": "https://www.pinterest.com/pin/488429522111840649/"
    },
    {
     "img": "board/b14",
@@ -116,6 +215,28 @@
     "pin": "https://www.pinterest.com/pin/488429522111906506/"
    },
    {
+    "img": "board/b27",
+    "w": 564,
+    "h": 846,
+    "title": "Bình gốm vân vải xếp nếp",
+    "cat": "Gốm in 3D",
+    "note": "The Jumony Collection Draws Inspiration From Ruffled Fabric",
+    "domain": "contemporist.com",
+    "link": "https://www.contemporist.com/jumony-collection-draws-inspiration-from-ruffled-fabric/",
+    "pin": "https://www.pinterest.com/pin/488429522111840405/"
+   },
+   {
+    "img": "board/b29",
+    "w": 564,
+    "h": 705,
+    "title": "Bình in 3D theo thuật toán Sierpiński",
+    "cat": "Gốm in 3D",
+    "note": "This design piece employs the Sierpiński algorithm to generate a looping fractal, forming a dynamic movement that shapes the table’s structure. The creative process sets the production paths through a direct human-machine, software-hardware connection. The final design evokes a biomimetic and biological appearance, with a triangular glass tabletop ensuring functionality and completing the circular dynamic flow that defines the central structure.",
+    "domain": "pixom.pt",
+    "link": "https://pixom.pt/products/filling-curves/filling-curves_serpinsky-table/",
+    "pin": "https://www.pinterest.com/pin/488429522111840395/"
+   },
+   {
     "img": "board/b22",
     "w": 564,
     "h": 702,
@@ -125,6 +246,17 @@
     "domain": "instagram.com",
     "link": "https://www.instagram.com/p/DJlZgrSMUvd/",
     "pin": "https://www.pinterest.com/pin/488429522111898351/"
+   },
+   {
+    "img": "board/b30",
+    "w": 564,
+    "h": 846,
+    "title": "Bình gốm vân nổi",
+    "cat": "Gốm in 3D",
+    "note": "",
+    "domain": "",
+    "link": "",
+    "pin": "https://www.pinterest.com/pin/488429522111840390/"
    },
    {
     "img": "board/b25",
@@ -138,6 +270,28 @@
     "pin": "https://www.pinterest.com/pin/488429522111840644/"
    },
    {
+    "img": "board/b31",
+    "w": 564,
+    "h": 752,
+    "title": "Bình gốm in 3D GLINA3",
+    "cat": "Gốm in 3D",
+    "note": "New ceramic company GLINA3. Soon.",
+    "domain": "instagram.com",
+    "link": "https://www.instagram.com/glina__3?igsh=MTlpdzdmZXE0MXY3bQ%3D%3D&utm_source=qr",
+    "pin": "https://www.pinterest.com/pin/488429522111840389/"
+   },
+   {
+    "img": "board/b39",
+    "w": 564,
+    "h": 751,
+    "title": "Tấm gỗ CNC vân sóng",
+    "cat": "Gia công CNC",
+    "note": "Wall art, CNC milling, Wood art, Decoration, 3D waves, Organic",
+    "domain": "etsy.com",
+    "link": "https://www.etsy.com/ch/shop/LaFabricaArt?ref=seller-platform-mcnav",
+    "pin": "https://www.pinterest.com/pin/488429522111818623/"
+   },
+   {
     "img": "board/b28",
     "w": 564,
     "h": 846,
@@ -147,6 +301,17 @@
     "domain": "vertico.com",
     "link": "https://www.vertico.com/projects/structural-columns",
     "pin": "https://www.pinterest.com/pin/488429522111840403/"
+   },
+   {
+    "img": "board/b41",
+    "w": 427,
+    "h": 640,
+    "title": "Ghế Rigatona in 3D",
+    "cat": "Nội thất in 3D",
+    "note": "Rigatona | 3D printed chair designed by Giorgio Gurioli and … | Flickr",
+    "domain": "flickr.com",
+    "link": "https://www.flickr.com/photos/95002045@N04/32894929942/in/photostream",
+    "pin": "https://www.pinterest.com/pin/488429522111812624/"
    },
    {
     "img": "board/b38",
@@ -160,6 +325,28 @@
     "pin": "https://www.pinterest.com/pin/488429522111818625/"
    },
    {
+    "img": "board/b42",
+    "w": 564,
+    "h": 846,
+    "title": "Tấm gạch tráng men xanh",
+    "cat": "Tráng men",
+    "note": "",
+    "domain": "3dwasp.com",
+    "link": "https://www.3dwasp.com/wp-content/uploads/2024/04/WASP-Art-Residency-Ceramic-3D-Printing-IOUS-Studio.jpg",
+    "pin": "https://www.pinterest.com/pin/488429522111796189/"
+   },
+   {
+    "img": "board/b45",
+    "w": 564,
+    "h": 564,
+    "title": "Module đất nung rỗng",
+    "cat": "Gạch và mặt dựng",
+    "note": "",
+    "domain": "static.dezeen.com",
+    "link": "https://static.dezeen.com/uploads/2023/11/rap-studio-3d-printed-ceramic-tiles-facade-rippling-textile_dezeen_2364_col_16.jpg",
+    "pin": "https://www.pinterest.com/pin/488429522111796180/"
+   },
+   {
     "img": "board/b40",
     "w": 564,
     "h": 752,
@@ -169,6 +356,17 @@
     "domain": "worldarchitecture.org",
     "link": "https://worldarchitecture.org/architecture-news/emhne/world-s-first-3d-printed-public-park-features-3d-printed-sculptures-benches-flower-beds-in-china.html",
     "pin": "https://www.pinterest.com/pin/488429522111818620/"
+   },
+   {
+    "img": "board/b48",
+    "w": 564,
+    "h": 1002,
+    "title": "Bình in 3D màu xanh",
+    "cat": "Gốm in 3D",
+    "note": "Future Thinkers at Ambiente 2020",
+    "domain": "sadecor.co.za",
+    "link": "https://www.sadecor.co.za/interior-design-blog/events/future-thinkers-at-ambiente-2020-ambiente/",
+    "pin": "https://www.pinterest.com/pin/488429522111796162/"
    },
    {
     "img": "board/b43",
@@ -237,15 +435,18 @@
   });
 
   var cols = 0;
+  var COL_W = 236; // Pinterest-like target column width (CSS px)
+  function gapPx() { return parseFloat(getComputedStyle(work).getPropertyValue('--gap')) || 12; }
   function columnCount() {
-    var w = work.clientWidth;
-    return w >= 1100 ? 4 : w >= 700 ? 3 : 2;
+    var g = gapPx();
+    // nearest count keeps real column widths within ~±15% of COL_W
+    return Math.max(2, Math.round((work.clientWidth + g) / (COL_W + g)));
   }
   function layout() {
     var n = columnCount();
     if (n === cols) return;
     cols = n;
-    var gap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gap')) || 16;
+    var gap = gapPx();
     var colW = (work.clientWidth - gap * (n - 1)) / n;
     var heights = [], els = [], frag = document.createDocumentFragment();
     for (var c = 0; c < n; c++) {

@@ -478,6 +478,13 @@ html[data-session="in"] [data-auth-out] { display: none !important; }
   .pin-cap span { display: none; }
 }
 
+/* Projects grid runs edge to edge like Pinterest: thin outer gutter, tight gaps.
+   Column count comes from the available width (≈236px per column, see home.js),
+   so zooming the page in or out adds or removes columns. */
+.work-bleed { --gap: 12px; padding-inline: clamp(8px, 1vw, 16px); }
+.work-bleed .masonry-col { gap: var(--gap); }
+@media (max-width: 599px) { .work-bleed { --gap: 8px; padding-inline: 8px; } }
+
 /* Save toggle (courses) */
 .pin-save {
   position: absolute; right: 10px; top: 10px; z-index: 2;
